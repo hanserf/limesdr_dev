@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Sat Nov 23 00:14:07 2019
+# Title: Antenna Sweep module
+# Author: Hans Erik Fjeld
+# Description: For antenna measurement analysis
+# Generated: Sat Nov 23 00:22:51 2019
 ##################################################
 
 
@@ -18,10 +20,10 @@ from optparse import OptionParser
 import limesdr
 
 
-class top_block(gr.top_block):
+class limesdr_loopback(gr.top_block):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Antenna Sweep module")
 
         ##################################################
         # Variables
@@ -133,7 +135,7 @@ class top_block(gr.top_block):
         self.limesdr_rx.set_center_freq(self.freq, 0)
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=limesdr_loopback, options=None):
 
     tb = top_block_cls()
     tb.start()
