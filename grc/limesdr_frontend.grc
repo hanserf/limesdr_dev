@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>limesdr_loopback</value>
+      <value>limesdr_frontend</value>
     </param>
     <param>
       <key>max_nouts</key>
@@ -1166,7 +1166,7 @@
     </param>
     <param>
       <key>pass_tags</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>timeout</key>
@@ -1201,7 +1201,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 388)</value>
+      <value>(648, 384)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1221,7 +1221,7 @@
     </param>
     <param>
       <key>pass_tags</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>timeout</key>

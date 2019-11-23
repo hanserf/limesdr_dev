@@ -5,7 +5,7 @@
 # Title: Antenna Sweep module
 # Author: Hans Erik Fjeld
 # Description: For antenna measurement analysis
-# Generated: Sat Nov 23 00:22:51 2019
+# Generated: Sat Nov 23 20:20:13 2019
 ##################################################
 
 
@@ -20,7 +20,7 @@ from optparse import OptionParser
 import limesdr
 
 
-class limesdr_loopback(gr.top_block):
+class limesdr_frontend(gr.top_block):
 
     def __init__(self):
         gr.top_block.__init__(self, "Antenna Sweep module")
@@ -40,8 +40,8 @@ class limesdr_loopback(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zmq_tx_pub = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://127.0.0.1:5000', 100, False, -1)
-        self.zmq_rx_pub = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://127.0.0.1:5001', 100, False, -1)
+        self.zmq_tx_pub = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://127.0.0.1:5000', 100, True, -1)
+        self.zmq_rx_pub = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://127.0.0.1:5001', 100, True, -1)
         self.scale_tx = blocks.multiply_vcc(1)
         self.lo_input = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, freq + sweep_tone, 1, 0)
         self.limesdr_tx = limesdr.sink('', 0, '', '')
@@ -135,7 +135,7 @@ class limesdr_loopback(gr.top_block):
         self.limesdr_rx.set_center_freq(self.freq, 0)
 
 
-def main(top_block_cls=limesdr_loopback, options=None):
+def main(top_block_cls=limesdr_frontend, options=None):
 
     tb = top_block_cls()
     tb.start()
